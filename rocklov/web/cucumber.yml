@@ -1,0 +1,11 @@
+---
+default: --publish-quiet -p allure -p bdd -p local -p firefox #define o formato padrao de resultado
+html: -f html -o logs/report.html #guarda o resultado de teste neste formato neste arquivo
+bdd: -f pretty #formato padrao em bdd
+allure: --format AllureCucumber::CucumberFormatter --out=logs #gera o relatorio no formato do allure
+local: CONFIG=local.yml
+hmg: CONFIG=hmg.yml
+firefox: BROWSER=firefox
+fire_headless: BROWSER=fire_headless
+chrome: BROWSER=chrome
+chrome_headless: BROWSER=chrome_headless

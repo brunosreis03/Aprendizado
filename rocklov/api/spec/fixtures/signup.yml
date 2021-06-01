@@ -1,0 +1,55 @@
+---
+- title: usuario ja existe
+  payload:
+    name: Lucas
+    email: lucas@gmail.com
+    password: 010203
+  code: 409
+  error: Email already exists :(
+- title: email invalido
+  payload:
+    name: Lucas
+    email: lucas&gmail.com
+    password: 010203
+  code: 412
+  error: wrong email
+- title: sem nome
+  payload:
+    name: ''
+    email: lucas1@gmail.com
+    password: 010203
+  code: 412
+  error: required name
+- title: sem email
+  payload:
+    name: Lucas
+    email: ''
+    password: 010203
+  code: 412
+  error: required email
+- title: sem senha
+  payload:
+    name: Lucas
+    email: lucas1@gmail.com
+    password: ''
+  code: 412
+  error: required password
+- title: sem campo nome
+  payload:
+    email: lucas1@gmail.com
+    password: 010203
+  code: 412
+  error: required name
+- title: sem campo email
+  payload:
+    name: Lucas
+    password: 010203
+  code: 412
+  error: required email
+- title: sem campo senha
+  payload:
+    name: Lucas
+    email: lucas1@gmail.com
+  code: 412
+  error: required password
+
