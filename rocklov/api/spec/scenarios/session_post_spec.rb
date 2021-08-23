@@ -1,7 +1,7 @@
 describe "POST /sessions" do
   context "login com sucesso" do
     before(:all) do #roda 1 vez para todos os contextos
-      payload = { email: "bruninhosreis@gmail.com", password: "Kost010203" }
+      payload = { email: "breistester@gmail.com", password: "010203" }
       @result = Sessions.new.login(payload)
     end
 

@@ -1,0 +1,37 @@
+pipeline {
+    agent {
+        docker {
+            image 'kost03/ruby-web-agent'
+            args '--network rocklov-network'
+        }
+    }
+
+    stages {
+        stage('Preparation'){
+            steps{
+                sh 'cd web && bundle install'
+            }
+        }
+        stage('Testing') {
+            steps {
+                sh 'cd web && rake local_seeds'
+            }
+        }
+        stage('UAT'){
+            steps{
+                echo 'Aguardando testes de aceitacao'
+                input message: 'Podemos ir para producao?'
+            }
+        }
+        stage('Prod'){
+            steps{
+                echo 'WebApp pronto para producao'
+            }
+        }
+    }
+    post {
+        always {
+            allure includeProperties: false, jdk: '', results: [[path: 'web/logs']]
+        }
+    }
+}

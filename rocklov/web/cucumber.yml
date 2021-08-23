@@ -1,5 +1,6 @@
 ---
-default: --publish-quiet -p allure -p bdd -p local -p firefox #define o formato padrao de resultado
+default: --publish-quiet -p allure -p bdd -p local -p chrome #define o formato padrao de resultado
+jenkins: --publish-quiet -p allure -p bdd -p local -p chrome_headless
 html: -f html -o logs/report.html #guarda o resultado de teste neste formato neste arquivo
 bdd: -f pretty #formato padrao em bdd
 allure: --format AllureCucumber::CucumberFormatter --out=logs #gera o relatorio no formato do allure

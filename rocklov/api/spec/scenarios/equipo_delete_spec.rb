@@ -1,6 +1,6 @@
 #encoding: utf-8
 
-describe "GET /equipos/{equipo_id}" do
+describe "DELETE /equipos/{equipo_id}" do
   before(:all) do
     payload = { email: "mateus@gmail.com", password: "010203" }
     result = Sessions.new.login(payload)

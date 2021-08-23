@@ -1,0 +1,37 @@
+require_relative "features/support/libs/mongo"
+require "digest/md5"
+
+#rake é uma ferramenta pra quando for necessário recriar a massa de teste, que refaz o ambiente assim como os métodos
+
+def to_md5(pass)
+  return Digest::MD5.hexdigest(pass)
+end
+
+task :local_seeds do
+  CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/local.yml"))
+
+  users = [
+    { name: "Bruno", email: "bruno@gmail.com", password: to_md5("kost010203") },
+    { name: "Bruno", email: "bruninhosreis@gmail.com", password: to_md5("Kost010203") },
+    { name: "Anderson", email: "spider@gmail.com", password: to_md5("010203") },
+    { name: "Joao", email: "joao@anunciante.com", password: to_md5("010203") },
+    { name: "Maria", email: "maria@locataria.com", password: to_md5("010203") },
+  ]
+
+  MongoDB.new.drop_danger
+  MongoDB.new.insert_users(users)
+
+  sh "cucumber -p jenkins" #comando pra executar o cucumber automaticamente
+end
+
+task :hmg_seeds do
+  CONFIG = YAML.load_file(File.join(Dir.pwd, "features/support/config/hmg.yml"))
+
+  users = [
+    { name: "Bruno", email: "bruno@gmail.com", password: to_md5("kost010203") },
+    { name: "Bruno", email: "bruninhosreis@gmail.com", password: to_md5("Kost010203") },
+  ]
+
+  MongoDB.new.drop_danger
+  MongoDB.new.insert_users(users)
+end

@@ -5,8 +5,8 @@ Before do #Page Objects
   @dash_page = DashPage.new
   @equipos_page = EquiposPage.new
 
-  #page.driver.browser.manage.window.maximize comando do capybara para automatizar com o browser em tela cheia
-  page.current_window.resize_to(1440, 900) #comando do capybara q trabalha com o tamanho mínimo da janela necessário de acordo com o projeto
+  page.driver.browser.manage.window.maximize #comando do capybara para automatizar com o browser em tela cheia
+  #page.current_window.resize_to(1440, 900) #comando do capybara q trabalha com o tamanho mínimo da janela necessário de acordo com o projeto
 end
 
 After do
